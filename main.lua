@@ -1,4 +1,3 @@
-
 require "ui"
 
 local win=ui.Window("Reference Apa Constructor-- Tesis", "fixed",ancho, alto)
@@ -38,7 +37,25 @@ Repositorio.fontsize=11
 
 local entryRepositorio=ui.Entry(win,"Repositorio", (ancho/2),250,150,25)
 
+
+ local panel= ui.Panel(win, (ancho/2)-450, 370,1100,800)
+  panel.bgcolor=0xFFFFFFF
+  
+local label02_primero=ui.Label(panel, "",0,0)
+  label02_primero.font="Roboto"
+ 
+ local label02_year=ui.Label(panel, "", 0,0)
+ label02_year.font="Roboto"
+local label02_title= ui.Label(panel, "",0 ,0)
+label02_title.font="Roboto Italic"
+
+local label02_EspTesis=ui.Label(panel, "",0,0)
+label02_EspTesis.font="Roboto"
+local label_Repositorio=ui.Label(panel, "", 0, 0)
+label_Repositorio.font="Roboto"
+
 local button=ui.Button(win, "Cita Apa para Tesis",(ancho/2)-100,300)
+local buttoneraser=ui.Button(win, "Borrar", (ancho/2)+100,300)
 
 function button:onClick()
   text_name= entrada01.text
@@ -73,23 +90,36 @@ function extension(palabras)
   end
 extension(palabras)
 
-  
-  local panel= ui.Panel(win, (ancho/2)-450, 370,1100,800)
-  panel.bgcolor=0xFFFFFFF
-  
-  local label02_primero=ui.Label(panel, lettra,0,0)
-  label02_primero.font="Roboto"
- ancho_primero= label02_primero.width
- local label02_year=ui.Label(panel, string.format("(%s).", entrada02.text), ancho_primero+5,0)
- label02_year.font="Roboto"
-local label02_title= ui.Label(panel, string.format("%s. ", entrada03.text), ancho_primero + label02_year.width+5 ,0)
-
-label02_title.font="Roboto Italic"
-local label02_EspTesis=ui.Label(panel, string.format("[%s] ", entraesp.text),0,20)
-label02_EspTesis.font="Roboto"
-local label_Repositorio=ui.Label(panel, string.format("%s.", entryRepositorio.text), label02_EspTesis.width+5, 20)
-label_Repositorio.font="Roboto"
+    label02_primero.text= lettra
+ label02_year.text= string.format("(%s).", entrada02.text)
+ label02_year.x=label02_primero.width+5
+ label02_title.text=string.format(" %s.", entrada03.text)
+ label02_title.x= label02_primero.width+ label02_year.width+5
+ label02_EspTesis.text=string.format("[%s] ", entraesp.text)
+ label02_EspTesis.x= label02_primero.width+ label02_year.width+ label02_title.width+5
+ label_Repositorio. text= string.format("%s.", entryRepositorio.text)
+ label_Repositorio.x= label02_primero.width+label02_year.width+label02_title.width+label02_EspTesis.width+5
 
   end
+
+function buttoneraser:onClick()
+  entrada01.text=""
+  entrada02.text=""
+  entrada03.text=""
+  entraesp.text=""
+  entryRepositorio.text=""
+  
+  label02_primero.text= ""
+ label02_year.text= ""
+ label02_title.text=""
+ label02_EspTesis.text=""
+ label_Repositorio. text= ""
+
+
+  
+  end
+
+
+
 
 ui.run(win):wait()
