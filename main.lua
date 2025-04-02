@@ -38,7 +38,7 @@ Repositorio.fontsize=11
 local entryRepositorio=ui.Entry(win,"Repositorio", (ancho/2),250,150,25)
 
 
- local panel= ui.Panel(win, (ancho/2)-450, 370,1100,800)
+ local panel= ui.Panel(win, (ancho/2)-250, 370,1100,800)
   panel.bgcolor=0xFFFFFFF
   
 local label02_primero=ui.Label(panel, "",0,0)
