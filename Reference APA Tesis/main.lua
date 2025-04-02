@@ -35,7 +35,7 @@ local Repositorio= ui.Label(win, "Repositorio:",(ancho/2)-100,250)
 Repositorio.font="Roboto"
 Repositorio.fontsize=11
 
-local entryRepositorio=ui.Entry(win,"Repositorio", (ancho/2),250,150,25)
+local entryRepositorio=ui.Entry(win,"Repositorio", (ancho/2)-250,150,25)
 
 
  local panel= ui.Panel(win, (ancho/2)-450, 370,1100,800)
